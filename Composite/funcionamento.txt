@@ -1,0 +1,8 @@
+O composite é batante aconselhável para quando nosso sistema de objetos poder ser
+representado como uma arvore.
+
+Por exemplo:
+    - Fazer a ordenção de objetos complexos ou não.
+        Nesse problema se queremos ordenar dado a uma key, presente em um objeto complexo.
+        Pode-se criar uma interface que fará a execução de uma função de comparação comum ao 
+        objeto complexo e ao objeto simples.

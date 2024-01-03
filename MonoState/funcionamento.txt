@@ -1,0 +1,7 @@
+O monostate é um design pattern que permite a criação de apenas uma instancia dele em todo o 
+sistema.
+
+Por exemplo :
+    - Somente existe um objeto None em python.
+        Isso acontece porque não é necessário mais de uma instancia dele.
+        Essa mesma instancia é reutilizada em todo o projeto para o fim dela criado.
