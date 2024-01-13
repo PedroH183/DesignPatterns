@@ -1,6 +1,7 @@
 
-from MonoState.UserModule.User import User
-from MonoState.UsuariosCadastradosModule.UsuariosCadastrados import UsuariosCadastrados
+
+from MonoState.MonoStateExample.UserModule import User
+from MonoState.MonoStateExample.UsuariosCadastradosModule import UsuariosCadastrados
 
 if __name__ == "__main__":
     
