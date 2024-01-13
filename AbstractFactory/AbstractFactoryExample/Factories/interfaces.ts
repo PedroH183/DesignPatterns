@@ -1,11 +1,11 @@
 
 export interface User{
-  id: string,
+  id: number,
   nome: string,
 }
 
 export type actions = {
-  nome: "",
+  nome: string,
   isAllow: boolean,
 }
 
