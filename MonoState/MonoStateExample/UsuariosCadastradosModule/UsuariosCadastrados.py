@@ -1,4 +1,4 @@
-from MonoState.UserModule.User import User
+from MonoState.MonoStateExample.UserModule.User import User
 
 class UsuariosCadastrados:
     """
