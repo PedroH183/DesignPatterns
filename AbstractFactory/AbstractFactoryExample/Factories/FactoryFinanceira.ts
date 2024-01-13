@@ -1,14 +1,15 @@
 import { FactoryUser, PropostasFinanceira, Regra, User, actions } from "./interfaces";
 
 class Financeira implements User{
-  id: string;
+  id: number;
   nome: string;
 
   getPropostasFinanceiras(): PropostasFinanceira[]{
     return [{id : 1, price_submited: 999}]
   }
 
-  constructor( nome ){
+  constructor( id: number, nome: string ){
+    this.id = id;
     this.nome = nome;
   }
 }
@@ -32,6 +33,6 @@ export class FinanceiraFactory implements FactoryUser{
   }
 
   createUser( nome : string ){
-    return new Financeira( nome ) 
+    return new Financeira( 1, nome ) 
   }
 }
