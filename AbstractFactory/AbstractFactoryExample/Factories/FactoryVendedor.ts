@@ -1,10 +1,11 @@
 import {User, Regra, actions, FactoryUser} from "./interfaces"
 
 class Vendedor implements User{
-  id: string;
+  id: number;
   nome: string;
 
-  constructor( nome ){
+  constructor( id: number, nome: string ){
+    this.id = id;
     this.nome = nome;
   }
 
@@ -17,7 +18,7 @@ class Vendedor implements User{
   }
 }
 
-export class VendedorRules implements Regra{
+class VendedorRules implements Regra{
   id: number;
   acoes: actions[];
 
@@ -36,6 +37,6 @@ export class VendedorFactory implements FactoryUser{
   }
 
   createUser( nome : string ){
-    return new Vendedor( nome ) 
+    return new Vendedor( 1, nome ) 
   }
 }
