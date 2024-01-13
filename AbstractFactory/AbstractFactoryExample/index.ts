@@ -1,6 +1,6 @@
 import { actions } from './Factories/interfaces';
+import { Funcionario } from './Factories/Funcionario';
 import {VendedorFactory } from './Factories/FactoryVendedor';
-import {FinanceiraFactory } from './Factories/FactoryFinanceira';
 
 const main = () => {
  
@@ -14,17 +14,23 @@ const main = () => {
     {nome: "financiar", isAllow: true},
   ]
 
-  const vendedor_factory = new VendedorFactory()
-  const financeira_factory = new FinanceiraFactory()
+  // create only one two factories to represents all variations of vendedor and finaceira
+  const factory_vendedor = new Funcionario( new VendedorFactory() ) // abstract method
+  const factory_financeira = new Funcionario( new VendedorFactory() ) // abstract method
+
+  const first_vendedor_user = factory_vendedor.createUser("Pedro Vendas")
+  const second_vendedor_user = factory_vendedor.createUser("Lucas Vendas")
   
-  const vendedor_user = vendedor_factory.createUser("Pedro Vendas")
-  const financeira_user = financeira_factory.createUser("Paulo Financas")
+  const first_financeira_user = factory_financeira.createUser("Daniel Financas")
+  const second_financeira_user = factory_financeira.createUser("Leandro Financas")
 
-  console.log( vendedor_user.nome );
-  console.log( financeira_user.nome );
+  console.log( first_vendedor_user.nome );
+  console.log( second_vendedor_user.nome );
+  console.log( first_financeira_user.nome );
+  console.log( second_financeira_user.nome );
 
-  const regra_vendedor = vendedor_factory.createRegras(regras_vendedor)
-  const regra_financiador = vendedor_factory.createRegras(regras_financeira)
+  const regra_vendedor = factory_vendedor.createRules(regras_vendedor)
+  const regra_financiador = factory_financeira.createRules(regras_financeira)
 
   console.log("vendedor>>", regra_vendedor.acoes);
   console.log("financeira>>", regra_financiador.acoes);
