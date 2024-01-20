@@ -11,7 +11,7 @@ que ela pretende acessar ).
   requer um lógica mais detalhada para o salvamento dessa imagem.
 
 - Em uma aplicação transforma a criptografia entre dois sistemas de autenticação
-  compatíveis.
+  compatíveis. Adaptador de Algoritmo Criptográfico.
 
 ## Diagrama
 
