@@ -62,13 +62,14 @@ export class AdapterAthentication implements AdapterAuthenticationAlgorithm{
 
 export class authenticationService implements IAuthentication{
   /*
-    Classe responsável por fazer a autenticação
+    Classe responsável por fazer a autenticação. 
+    Funciona como se fosse minha classe de domínio em uma arquitetura hexagonal
     
     O client não pode se comunicar diretamente com esta classe pois há 
     diferentes tipos de criptografia no sistema, sendo necessário passar por
     uma adaptação.
 
-    Esse serviço só funciona com password em decimal !
+    Esse serviço só funciona com as password em decimais !
   */
   
   login(username: string, password: string): {} {
