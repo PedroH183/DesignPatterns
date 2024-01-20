@@ -1,33 +1,25 @@
-import { user } from "./interfaces";
+import { api_user_credentials } from "./api_simulacao_data";
 import { AdapterAthentication, authenticationService } from "./classes";
 
+/*
+  Problema:
+  Meu sistema recebe as senha em ascii da api ( simulada por api_user_credentials)
+  e preciso adapatar essa senha de modo que eu não altere o funcionamento da classe 
+  de autenticação, pois possuo dados já cadastrados que seriam perdidos.
 
-const api_user_credentials : user[] = [
-  {
-    // valid user
-    "nome" : "Pedro",
-    "senha" : "ascii:49 50 51 52" // 1234
-  },
-  {
-    // invalid crendential
-    "nome" : "Arnold",
-    "senha" : "ascii:49 50 51 53" // 1235
-  }
-]
+  Solução:
+  Criei um adapater para transformar os dados vindos da api em decimais ( que deveria 
+    ser o padrão ) e utilizo minha classe original de autenticação.
+*/
+
 
 const main = () => {
-  // this function works like my controller in a restfulApi
-  
-  const authetication = new authenticationService()
   const adapter = new AdapterAthentication()
 
-  // as senhas recebidas estão em ascii e sendo convertidas para decimal
-  let passwordDecimal = adapter.getPasswordInDecimal(api_user_credentials[0]["senha"])
-  let result = authetication.login( api_user_credentials[0]["nome"], passwordDecimal )
+  let result = adapter.login( api_user_credentials[0]["nome"], api_user_credentials[0]["senha"] )
   console.log(result);
 
-  passwordDecimal = adapter.getPasswordInDecimal(api_user_credentials[1]["senha"])
-  result = authetication.login( api_user_credentials[1]["nome"], passwordDecimal )
+  result = adapter.login( api_user_credentials[1]["nome"], api_user_credentials[1]["senha"] )
   console.log(result);
   
   return 0;
