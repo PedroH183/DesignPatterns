@@ -4,11 +4,11 @@ import { AdapterAthentication, authenticationService } from "./classes";
 /*
   Problema:
   Meu sistema recebe as senha em ascii da api ( simulada por api_user_credentials)
-  e preciso adapatar essa senha de modo que eu não altere o funcionamento da classe 
+  e preciso adaptar essa senha de modo que eu não altere o funcionamento da classe 
   de autenticação, pois possuo dados já cadastrados que seriam perdidos.
 
   Solução:
-  Criei um adapater para transformar os dados vindos da api em decimais ( que deveria 
+  Criei um adapter para transformar os dados vindos da api em decimais ( que deveria 
     ser o padrão ) e utilizo minha classe original de autenticação.
 */
 
