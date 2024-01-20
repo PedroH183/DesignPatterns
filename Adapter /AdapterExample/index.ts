@@ -12,8 +12,7 @@ const api_user_credentials : user[] = [
     // invalid crendential
     "nome" : "Arnold",
     "senha" : "ascii:49 50 51 53" // 1235
-  },
-  
+  }
 ]
 
 const main = () => {

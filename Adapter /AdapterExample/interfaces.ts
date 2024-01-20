@@ -1,4 +1,3 @@
-
 export type asciiToDecimal = {
   "48": number;
   "49": number;
@@ -11,7 +10,6 @@ export type asciiToDecimal = {
   "56": number;
   "57": number;
 }
-
 
 export interface user{
   nome : string,

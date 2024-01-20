@@ -6,16 +6,19 @@ export const db_users : user[] = [
   // consideração a senha é composta apenas de numeros
   {
     "nome" : "Pedro",
-    "senha": "decimal:1234", // method: ascii and password : 48 49 50 51 52
+    "senha": "decimal:1234",
   },
   {
     "nome" : "Arnold",
-    "senha": "decimal:1234" // method: decimal and password : '1234'
+    "senha": "decimal:1234",
   }
 ]
 
 export class AdapterAthentication implements AdapterAuthenticationAlgorithm{
-  
+  /*
+    Transforma a senha de ascii para decimal, é valido ressaltar que a senha 
+    é composta apenas de dígitos.
+  */
   mapper_numbers_in_ascii : {[key : string ] : number} = {
     "48" : 0,
     "49" : 1,
