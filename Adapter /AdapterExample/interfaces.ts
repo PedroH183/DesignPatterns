@@ -21,5 +21,4 @@ export interface IAuthentication{
 }
 
 export interface AdapterAuthenticationAlgorithm extends IAuthentication{
-  // getPasswordInDecimal( password : string ): string
 }
