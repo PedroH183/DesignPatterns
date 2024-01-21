@@ -1,24 +1,15 @@
-import { AdapterAuthenticationAlgorithm, IAuthentication, asciiToDecimal, user } from "./interfaces";
+import { db_users } from "./db_simulacao_data";
+import { AdapterAuthenticationAlgorithm, IAuthentication, user } from "./interfaces";
 
-
-export const db_users : user[] = [
-  // password pattern > method:password 
-  // consideração a senha é composta apenas de numeros
-  {
-    "nome" : "Pedro",
-    "senha": "decimal:1234",
-  },
-  {
-    "nome" : "Arnold",
-    "senha": "decimal:1234",
-  }
-]
 
 export class AdapterAthentication implements AdapterAuthenticationAlgorithm{
   /*
-    Transforma a senha de ascii para decimal, é valido ressaltar que a senha 
-    é composta apenas de dígitos.
+    Adapter é responsável por deter a lógica de comunicação 
+    com a porta da classe dominio que nesse contexto é o authenticationService
   */
+
+  auth_service : authenticationService
+  
   mapper_numbers_in_ascii : {[key : string ] : number} = {
     "48" : 0,
     "49" : 1,
@@ -32,7 +23,30 @@ export class AdapterAthentication implements AdapterAuthenticationAlgorithm{
     "57" : 9,
   }
 
-  getPasswordInDecimal( passwordInAsciiComplete : string ): string {
+  constructor(){
+    // composition method
+    this.auth_service = new authenticationService()
+  }
+
+  login(username: string, password: string): {} {
+    const valid_password = this.check_type_password(password);
+    return this.auth_service.login(username, valid_password);
+  }
+
+  private check_type_password( password: string ){
+    let pass = password;
+    
+    const method_password = password.split(":")[0]
+    if( method_password  === "ascii" ){
+      pass = this.getPasswordInDecimal(password);
+    
+    }else if( method_password !== "decimal" ){    
+      throw new Error("Password Method invalid");
+    }
+    return pass
+  }
+
+  private getPasswordInDecimal( passwordInAsciiComplete : string ): string {
     let passwordInDecimal : string[] = []
     let passwordInAscii = passwordInAsciiComplete.split(":")[1].split(" ")
 
